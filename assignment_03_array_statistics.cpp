@@ -42,3 +42,77 @@
 #include <iostream>
 using namespace std;
 
+bool isValidN(int n) {
+ if (n <= 0) {
+  return false;
+ } else {
+    return true;
+ }
+}
+
+void readNumbers(double numbers [], int n) {
+  for ( int i =0; i < n ; i++)
+  {
+   cout << "Enter number" << i + 1 << ": ";
+   cin >> numbers[i] ;
+  }
+}
+
+double computeSum(double numbers[], int n) {
+  double total = 0;
+  for (int i=0 ; i < n ; i++) {
+     total += numbers[i];
+  }
+    return total;
+}
+
+double computeAverage(double sum, int n) {
+  return sum/n;
+}
+
+double computeMax( double numbers[], int n){
+  double max = numbers[0];
+  for (int i=1 ; i < n; ++i){
+    if (numbers[i] > max){
+      max =numbers[i];
+    }
+  }
+  return max;
+}
+
+double computeMin( double numbers[], int n){
+  double min = numbers[0];
+  for (int i=1 ; i < n; ++i){
+    if (numbers[i] < min){
+      min =numbers[i];
+    }
+  }
+  return min;
+}
+
+int main(){
+  int n;
+  cout << "How many numbers?: " <<endl;
+  cin >> n ;
+
+  if (!isValidN(n)){
+      cout << "Error message here" << endl;
+      return 1;
+  }
+  double numbers[100];
+  readNumbers(numbers,n);
+  double sum =  computeSum(numbers,n);
+  double average = computeAverage(sum,n);
+  double maximum = computeMax(numbers,n);
+  double minimum = computeMin(numbers,n);
+
+  cout << "Sum: " << sum << endl;
+  cout << "Average: " << average << endl;
+  cout << "Max: " << maximum << endl;
+  cout << "Min: " << minimum << endl;
+
+ return 0;
+}
+
+
+
