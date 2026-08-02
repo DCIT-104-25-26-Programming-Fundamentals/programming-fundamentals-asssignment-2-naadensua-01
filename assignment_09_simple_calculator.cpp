@@ -73,3 +73,115 @@
 #include <cmath>
 using namespace std;
 
+void showMenu();
+double add(double a, double b);
+double subtract(double a, double b);
+double multiply(double a, double b);
+void divide(double a, double b);
+double FindModulus(double a, double b);
+double power(double a, double b);
+
+int main() {
+    int choice;
+
+    while (true) {
+        showMenu();
+        cin >> choice;
+
+        if (choice == 7) {
+            cout << "Goodbye!" << endl;
+            break;
+        }
+
+        if (choice < 1 || choice > 7) {
+            cout << "Invalid choice. Please try again." << endl;
+            cout << endl;
+            continue;
+        }
+
+        double num1, num2;
+        cout << "Enter first number : ";
+        cin >> num1;
+        cout << "Enter second number: ";
+        cin >> num2;
+
+        cout << fixed << setprecision(2);
+
+        if (choice == 1) {
+            double result = add(num1, num2);
+            cout << "Result: " << num1 << " + " << num2 << " = " << result << endl;
+        }
+        else if (choice == 2) {
+            double result = subtract(num1, num2);
+            cout << "Result: " << num1 << " - " << num2 << " = " << result << endl;
+        }
+        else if (choice == 3) {
+            double result = multiply(num1, num2);
+            cout << "Result: " << num1 << " * " << num2 << " = " << result << endl;
+        }
+        else if (choice == 4) {
+            divide(num1, num2);
+        }
+        else if (choice == 5) {
+            if (num2 == 0) {
+                cout << "Error: Cannot divide by zero." << endl;
+            }
+            else {
+                double result = fmod(num1, num2);
+                cout << "Result: " << num1 << " % " << num2 << " = " << result << endl;
+            }
+        }
+        else if (choice == 6) {
+            double result = power(num1, num2);
+            cout << "Result: " << num1 << " ^ " << num2 << " = " << result << endl;
+        }
+
+        cout << endl;
+    }
+
+    return 0;
+}
+
+void showMenu() {
+    cout << "============================" << endl;
+    cout << "     SIMPLE CALCULATOR" << endl;
+    cout << "============================" << endl;
+    cout << "1. Addition" << endl;
+    cout << "2. Subtraction" << endl;
+    cout << "3. Multiplication" << endl;
+    cout << "4. Division" << endl;
+    cout << "5. Modulus" << endl;
+    cout << "6. Exponentiation" << endl;
+    cout << "7. Quit" << endl;
+    cout << "Select an operation (1-7): ";
+}
+
+double add(double a, double b) {
+    return a + b;
+}
+
+double subtract(double a, double b) {
+    return a - b;
+}
+
+double multiply(double a, double b) {
+    return a * b;
+}
+
+void divide(double a, double b) {
+    if (b == 0) {
+        cout << "Error: Cannot divide by zero." << endl;
+    }
+    else {
+        double result = a / b;
+        cout << "Result: " << a << " / " << b << " = " << result << endl;
+    }
+}
+
+double FindModulus(double a, double b) {
+    return fmod(a, b);
+}
+
+double power(double a, double b) {
+    return pow(a, b);
+}
